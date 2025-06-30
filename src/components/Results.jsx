@@ -1,4 +1,4 @@
-import {calculateInvestmentResults} from "../util/investment.js"
+
 
 function Results() {
 
@@ -16,10 +16,10 @@ function Results() {
       <tbody>
         <tr>
           <td></td>
-          <td>${calculateInvestmentResults.initialInvestment}</td>
-          <td>${calculateInvestmentResults.annualInvestment}</td>
-          <td>${calculateInvestmentResults.expectedReturn}</td>
-          <td>${calculateInvestmentResults.duration}</td>
+          <td>${initialInvestment}</td>
+          <td>${annualInvestment}</td>
+          <td>${expectedReturn}</td>
+          <td>${duration}</td>
         </tr>
       </tbody>
     </table>
