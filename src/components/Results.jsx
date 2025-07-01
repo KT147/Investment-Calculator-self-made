@@ -1,7 +1,11 @@
+import { calculateInvestmentResults, formatter } from "../util/investment"
 
 
-function Results() {
+function Results({initialInvestment, annualInvestment, expectedReturn, duration}) {
+const resultData= calculateInvestmentResults({initialInvestment, annualInvestment, expectedReturn, duration})
 
+
+console.log(resultData)
   return (
     <table id="result">
       <thead>
@@ -14,13 +18,15 @@ function Results() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td>${initialInvestment}</td>
-          <td>${annualInvestment}</td>
-          <td>${expectedReturn}</td>
-          <td>${duration}</td>
-        </tr>
+        {resultData.map(yearData =>
+          <tr key={yearData.year}>
+            <td>{yearData.year}</td>
+            <td>{formatter.format(yearData.valueEndOfYear)}</td>
+            <td>{formatter.format(yearData.interest)}</td>
+            <td>{formatter.format(yearData.valueEndOfYear - yearData.annualInvestment * yearData.year - initialInvestment)}</td>
+            <td>{formatter.format(yearData.valueEndOfYear - (yearData.valueEndOfYear - yearData.annualInvestment * yearData.year - initialInvestment))}</td>
+          </tr>
+        )}
       </tbody>
     </table>
   )
